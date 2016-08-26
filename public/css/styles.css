@@ -1,0 +1,36 @@
+ body {
+ 	font-family: 'Lato';
+ }
+
+ .fa-btn, .fa-spin {
+ 	margin-right: 6px;
+ }
+ .alert{
+ 	text-align: center;
+ 	margin-top: -20px;
+ 	padding-top: 20px;
+ 	font-size: 20px;
+ }
+ .highlight{
+ 	font-weight: bolder;
+ 	color: #0C00F8;
+ 	text-decoration: none;
+ }
+
+ .borderless>tbody>tr>td,
+ .borderless>tbody>tr>th,
+ .borderless>tfoot>tr>td, 
+ .borderless>tfoot>tr>th, 
+ .borderless>thead>tr>td, 
+ .borderless>thead>tr>th {
+ 	border:none;
+ }
+
+ .small{
+ 	max-width: 300px;
+ }
+
+ .input-borderless{
+ 	border: none;
+ 	width: 100%;
+ }
