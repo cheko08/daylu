@@ -23,8 +23,20 @@ class StoreNotaRequest extends Request
      */
     public function rules()
     {
-        return [
-            'total' => 'required',
-        ];
+      $rules = [
+      'id_cliente' => 'required',
+      ];
+
+      foreach($this->request->get('cantidad') as $key => $val)
+      {
+        $rules['cantidad.'.$key] = 'required';
     }
+
+    foreach($this->request->get('precio') as $key => $val)
+    {
+        $rules['precio.'.$key] = 'required';
+    }
+
+    return $rules;
+}
 }
