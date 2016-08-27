@@ -25,8 +25,10 @@
 							<td><input type="text" disabled="disabled" class="form-control small" id="email"></td>
 						</tr>
 					</table>
+					<button class="btn btn-success" id="add_field_button"><i class="fa fa-btn fa-plus" aria-hidden="true"></i>Agregar Fila</button>
+
 					<table class="table table-bordered  table-condensed">
-						<button id="add_field_button">Agregar Fila</button>
+						
 						<thead>
 							<tr class="info">
 								<th>Cantidad</th>
@@ -38,40 +40,42 @@
 						</thead>
 						<tbody id="table">
 							<tr class="txtMult">
-								<td class="col-md-1"><input type="text" required="" class="input-borderless" name="cantidad[]" id="cantidad"></td>
-								<td class="col-md-5"><input type="text" class="input-borderless" name="des_1[]"></td>
-								<td class="col-md-4"><input type="text" class="input-borderless" name="des_2[]"></td>
-								<td class="col-md-1"><input type="text" required="" class="input-borderless" name="precio[]" id="precio"></td>
-								<td class="col-md-1"><input disabled="disabled" type="text" class="input-borderless total" name="total[]" id="total"></td>
+								<td class="col-md-1"><input type="text" required="" class="form-control input-borderless" name="cantidad[]" id="cantidad"></td>
+								<td class="col-md-5"><input type="text" class="form-control input-borderless" name="des_1[]"></td>
+								<td class="col-md-4"><input type="text" class="form-control input-borderless" name="des_2[]"></td>
+								<td class="col-md-1"><input type="text" required="" class="form-control input-borderless" name="precio[]" id="precio"></td>
+								<td class="col-md-1"><input disabled="disabled" type="text" class="form-control input-borderless total" name="total[]" id="total"></td>
 							</tr>
 						</tbody>
 					</table>
+
+
 					<table id="montos" class="table table-bordered" style="max-width: 200px">
 						<tr class="montos">
 							<th>Subtotal</th>
-							<td><input type="text" name="subtotal" disabled="" id="subtotal" class="input-borderless"></td>
+							<td><input type="text" name="subtotal" disabled="" id="subtotal" class="form-control input-borderless"></td>
 						</tr>
 						<tr class="montos">
 							<th>IVA</th>
-							<td><input type="text" name="iva" disabled="" id="iva" class="input-borderless"></td>
+							<td><input type="text" name="iva" disabled="" id="iva" class="form-control input-borderless"></td>
 						</tr>
 						<tr class="montos">
 							<th>Total</th>
-							<td><input type="text" name="gran_total" disabled="" id="gran_total" class="input-borderless"></td>
+							<td><input type="text" name="gran_total" disabled="" id="gran_total" class="form-control input-borderless"></td>
 						</tr>
 						<tr class="montos">
 							<th>Anticipo</th>
-							<td><input type="text" name="anticipo" id="anticipo" class="input-borderless"></td>
+							<td><input type="text" name="anticipo" id="anticipo" class="form-control input-borderless"></td>
 						</tr>
 						<tr  class="montos">
 							<th>Saldo</th>
-							<td><input type="text" name="saldo" disabled="" id="saldo" class="input-borderless"></td>
+							<td><input type="text" name="saldo" disabled="" id="saldo" class="form-control input-borderless"></td>
 						</tr>
 						
 					</table>
 
-					<button type="submit">
-						Enviar
+					<button class="btn btn-primary" type="submit">
+						Guardar Nota
 					</button>
 				</form>
 			</div>
@@ -95,7 +99,7 @@
     	e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<tr class="txtMult"><td class="col-md-1"><input type="number" required="" class="input-borderless" name="cantidad[]" id="cantidad"></td><td class="col-md-5"><input type="text" class="input-borderless" name="des_1[]"></td><td class="col-md-4"><input type="text" class="input-borderless" name="des_2[]"></td><td class="col-md-1"><input type="text" class="input-borderless" required="" name="precio[]" id="precio"></td><td class="col-md-1"><input disabled="disabled" type="text" class="input-borderless total" name="total[]" id="total"></td><td><button class="btn btn-default btn-sm" id="remove_field">X</button></td></tr>'); //add input box
+            $(wrapper).append('<tr class="txtMult"><td class="col-md-1"><input type="number" required="" class="form-control input-borderless" name="cantidad[]" id="cantidad"></td><td class="col-md-5"><input type="text" class="form-control input-borderless" name="des_1[]"></td><td class="col-md-4"><input type="text" class="form-control input-borderless" name="des_2[]"></td><td class="col-md-1"><input type="text" class="form-control input-borderless" required="" name="precio[]" id="precio"></td><td class="col-md-1"><input disabled="disabled" type="text" class="form-control input-borderless total" name="total[]" id="total"></td><td><button class="btn btn-danger btn-sm" id="remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td></tr>'); //add input box
         }
     });
     
