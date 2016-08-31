@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Nota;
 use App\Item;
 use Auth;
+use App\Transaction;
 
 class NotasController extends Controller
 {
@@ -25,20 +26,22 @@ class NotasController extends Controller
 	public function storeNota(StoreNotaRequest $request)
 	{
 
-		$gran_total = floatval(str_replace(',', '.', str_replace('.', '', $request->input('gran_total'))));
-		$anticipo = floatval(str_replace(',', '.', str_replace('.', '', $request->input('anticipo'))));
-		$saldo = floatval(str_replace(',', '.', str_replace('.', '', $request->input('saldo'))));
+		$gran_total = str_replace(',', '',$request->input('gran_total'));
+		$anticipo = str_replace(',', '',$request->input('anticipo'));
+		$saldo = str_replace(',', '',$request->input('saldo'));
+		$impuestos = str_replace(',', '',$request->input('iva'));
 
 		$nota = Nota::create([
 			'folio' => '234',
 			'monto' => $gran_total,
 			'anticipo' => $anticipo,
 			'saldo' => $saldo,
-			'impuestos' => $request->input('iva'),
+			'impuestos' => $impuestos,
 			'cliente_id' => $request->input('id_cliente'),
 			'vendedor_id' => Auth::user()->id,
 			'status' => 'Nueva'
 			]);
+
 
 		foreach($request->input('cantidad') as $key => $cantidad)
 		{
@@ -50,5 +53,43 @@ class NotasController extends Controller
 				'precio' => $request->input('precio')[$key]
 				]);
 		}
+
+		Transaction::create([
+			'user_id'=> Auth::user()->id,
+			'type' => 'Entrada',
+			'amount' => $anticipo,
+			'status' => 'Activo',
+			'comment' => 'Anticipo de la nota Folio #'.$nota->folio
+			]);
+
+		return redirect()->action(
+			'NotasController@showNota', ['id' => $nota->id]
+			);
+	}
+
+	public function showNota($id)
+	{
+		$nota = Nota::findOrFail($id);
+		return view('notas.show',compact('nota'));
+	}
+
+	public function cerrarNota($id)
+	{
+		$nota = Nota::findOrFail($id);
+
+		Transaction::create([
+			'user_id'=> Auth::user()->id,
+			'type' => 'Entrada',
+			'amount' => $nota->saldo,
+			'status' => 'Activo',
+			'comment' => 'Pago del saldo de la nota Folio #'.$nota->folio
+			]);
+
+
+		$nota->saldo = 0;
+		$nota->status = 'Cerrada';
+		$nota->save();
+
+		return redirect('/home');
 	}
 }

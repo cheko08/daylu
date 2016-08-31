@@ -1,6 +1,19 @@
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print * {
+    visibility: visible;
+  }
+}
+
  body {
  	font-family: 'Lato';
  }
+
+input[type="text"]:disabled {
+    background: #fff;
+}
 
  .fa-btn, .fa-spin {
  	margin-right: 6px;

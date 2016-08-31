@@ -121,6 +121,37 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+    <table class="table table-bordered">
+      <caption>Notas</caption>
+      <thead>
+        <tr class="info">
+          <th>Folio</th>
+          <th>Estatus</th>
+          <th>Monto</th>
+          <th>Anticipo</th>
+          <th>Saldo</th>
+          <th>Vendedor</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($cliente->notas as $nota)
+        <tr>
+        <td><a href="{{url('notas/show/'.$nota->id)}}" title="">{{$nota->folio}}</a></td>
+          <td>{{$nota->status}}</td>
+          <td>{{number_format($nota->monto)}}</td>
+          <td>{{number_format($nota->anticipo)}}</td>
+          <td>{{number_format($nota->saldo)}}</td>
+          <td>{{$nota->vendedor->name}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+</div>
 </div>
 @section('scripts')
 <script type="text/javascript">

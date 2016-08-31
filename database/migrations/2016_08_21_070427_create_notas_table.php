@@ -16,12 +16,12 @@ class CreateNotasTable extends Migration
             $table->increments('id');
             $table->string('folio');
             $table->integer('cliente_id');
-            $table->double('monto');
-            $table->double('anticipo');
-            $table->double('saldo');
+            $table->decimal('monto',11,2);
+            $table->decimal('anticipo',11,2);
+            $table->decimal('saldo',11,2);
             $table->integer('vendedor_id');
             $table->string('status');
-            $table->string('impuestos');
+            $table->decimal('impuestos',11,2);
             $table->string('comentarios');
             $table->timestamps();
         });

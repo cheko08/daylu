@@ -55,8 +55,11 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                           <li role="separator" class="divider"></li>
+                           
                            @if (Auth::user()->role === 'admin')
+                           <li><a href="{{ url('/caja') }}"><i class="fa fa-btn fa-exchange"></i>Movimientos</a></li>
+                            <li><a href="{{ url('/retiro') }}"><i class="fa fa-btn fa-money"></i>Retiro de Efectivo</a></li>
+                           <li role="separator" class="divider"></li>
                            <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user-plus"></i>Agregar Vendedor</a></li>
                            <li><a href="{{ url('/users') }}"><i class="fa fa-btn fa-users"></i>Ver Vendedores</a></li>
                            <li role="separator" class="divider"></li>

@@ -26,6 +26,12 @@
 						</tr>
 					</table>
 					<button class="btn btn-success" id="add_field_button"><i class="fa fa-btn fa-plus" aria-hidden="true"></i>Agregar Fila</button>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="" id="sin_iva">
+							Sin IVA
+						</label>
+					</div>
 
 					<table class="table table-bordered  table-condensed">
 						
@@ -65,7 +71,7 @@
 						</tr>
 						<tr class="montos">
 							<th>Anticipo</th>
-							<td><input type="text" name="anticipo" id="anticipo" class="form-control input-borderless"></td>
+							<td><input type="text" name="anticipo" required="" id="anticipo" class="form-control input-borderless"></td>
 						</tr>
 						<tr  class="montos">
 							<th>Saldo</th>
@@ -155,7 +161,13 @@
            });
 
            var subtotal = mult;
+           //check if the note has taxes
+           if($('#sin_iva').is(':checked')) {
+           	var iva = (1 * 0);
+           } else {
            var iva =Math.ceil((mult * .16) * 100 ) /100;
+           }
+           
            var gran_total = subtotal + iva;
 
            var subtotalComas = addCommas(subtotal);

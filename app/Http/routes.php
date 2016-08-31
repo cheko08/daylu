@@ -54,3 +54,14 @@ Route::get('/users', 'UserController@getUsers');
   */
  Route::get('/notas/create', 'NotasController@createNota');
  Route::post('/notas/store', 'NotasController@storeNota');
+ Route::get('/notas/show/{id}', 'NotasController@showNota');
+ Route::post('/notas/cerrar/{id}','NotasController@cerrarNota');
+
+
+ /**
+  *Caja
+  */
+ Route::get('/caja', 'TransactionsController@caja');
+ Route::get('/retiro', 'TransactionsController@retiro');
+ Route::post('/retiro', 'TransactionsController@retirar');
+ Route::get('/cerrar-caja', 'TransactionsController@cerrarCaja');
