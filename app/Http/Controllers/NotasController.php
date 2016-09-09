@@ -32,7 +32,7 @@ class NotasController extends Controller
 		$impuestos = str_replace(',', '',$request->input('iva'));
 
 		$nota = Nota::create([
-			'folio' => '234',
+			'folio' => $this->generarFolio('c'),
 			'monto' => $gran_total,
 			'anticipo' => $anticipo,
 			'saldo' => $saldo,
@@ -91,5 +91,21 @@ class NotasController extends Controller
 		$nota->save();
 
 		return redirect('/home');
+	}
+
+	public function generarFolio($type)
+	{
+		if($type === 'c')
+		{
+			$folio = 'C-';
+		}else{
+			$folio = 'N-';
+		}
+
+		$date = new \DateTime;
+		$folio .= $date->format('d-m-y');
+		$folio .= '-'.(Nota::max('id') + 1) ;
+
+		return $folio;
 	}
 }

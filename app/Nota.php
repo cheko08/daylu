@@ -37,9 +37,6 @@ class Nota extends Model
 		return $this->hasMany('App\Item');
 	}
 
-	public function generarFolio()
-	{
-		return 12345;
-	}
+
 	
 }

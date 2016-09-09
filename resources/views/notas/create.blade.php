@@ -8,7 +8,7 @@
 			<div class="panel-body">
 				<form action="{{url('notas/store')}}" method="post">
 					{{ csrf_field() }}
-					<table class="table table-condensed borderless">
+					<table class="table table-responsive borderless">
 						<tr>
 							<th class="col-md-2">Cliente</th>
 							<td>
@@ -47,8 +47,8 @@
 						<tbody id="table">
 							<tr class="txtMult">
 								<td class="col-md-1"><input type="text" required="" class="form-control input-borderless" name="cantidad[]" id="cantidad"></td>
-								<td class="col-md-5"><input type="text" class="form-control input-borderless" name="des_1[]"></td>
-								<td class="col-md-4"><input type="text" class="form-control input-borderless" name="des_2[]"></td>
+								<td class="col-md-5"><textarea class="form-control input-borderless" name="des_1[]"></textarea></td>
+								<td class="col-md-4"><textarea class="form-control input-borderless" name="des_2[]"></textarea></td>
 								<td class="col-md-1"><input type="text" required="" class="form-control input-borderless" name="precio[]" id="precio"></td>
 								<td class="col-md-1"><input disabled="disabled" type="text" class="form-control input-borderless total" name="total[]" id="total"></td>
 							</tr>
@@ -105,7 +105,7 @@
     	e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<tr class="txtMult"><td class="col-md-1"><input type="number" required="" class="form-control input-borderless" name="cantidad[]" id="cantidad"></td><td class="col-md-5"><input type="text" class="form-control input-borderless" name="des_1[]"></td><td class="col-md-4"><input type="text" class="form-control input-borderless" name="des_2[]"></td><td class="col-md-1"><input type="text" class="form-control input-borderless" required="" name="precio[]" id="precio"></td><td class="col-md-1"><input disabled="disabled" type="text" class="form-control input-borderless total" name="total[]" id="total"></td><td><button class="btn btn-danger btn-sm" id="remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td></tr>'); //add input box
+            $(wrapper).append('<tr class="txtMult"><td class="col-md-1"><input type="number" required="" class="form-control input-borderless" name="cantidad[]" id="cantidad"></td><td class="col-md-5"><textarea class="form-control input-borderless" name="des_1[]"></textarea></td><td class="col-md-4"><textarea class="form-control input-borderless" name="des_2[]"></textarea></td><td class="col-md-1"><input type="text" class="form-control input-borderless" required="" name="precio[]" id="precio"></td><td class="col-md-1"><input disabled="disabled" type="text" class="form-control input-borderless total" name="total[]" id="total"></td><td><button class="btn btn-danger btn-sm" id="remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td></tr>'); //add input box
         }
     });
     

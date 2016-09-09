@@ -9,7 +9,7 @@
 				<form action="{{url('notas/cerrar/'.$nota->id)}}" method="post">
 					{{ csrf_field() }}
 					<div id="print">
-					<table class="table table-condensed borderless">
+					<table class="table table-responsive borderless">
 						<tr>
 							<th class="col-md-2">Cliente</th>
 							<td>
@@ -47,8 +47,8 @@
 						@foreach($nota->items as $item)
 							<tr class="txtMult">
 								<td class="col-md-1"><input value="{{$item->cantidad}}" type="text" disabled="" class="form-control input-borderless" name="cantidad[]" id="cantidad"></td>
-								<td class="col-md-5"><input value="{{$item->descripcion_1}}" type="text" class="form-control input-borderless" name="des_1[]" disabled></td>
-								<td class="col-md-4"><input value="{{$item->descripcion_2}}" type="text" class="form-control input-borderless" name="des_2[]" disabled></td>
+								<td class="col-md-5"><textarea class="form-control input-borderless" name="des_1[]" disabled>{{$item->descripcion_1}}</textarea></td>
+								<td class="col-md-4"><textarea class="form-control input-borderless" name="des_2[]" disabled>{{$item->descripcion_2}}</textarea></td>
 								<td class="col-md-1"><input value="{{number_format($item->precio)}}" type="text" required="" class="form-control input-borderless" name="precio[]" id="precio" disabled></td>
 								<td class="col-md-1"><input value="{{number_format($item->precio * $item->cantidad)}}" disabled="disabled" type="text" class="form-control input-borderless total" name="total[]" id="total"></td>
 							</tr>
